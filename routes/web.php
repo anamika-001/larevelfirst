@@ -15,14 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// routing for category
 Route::get('/admin', function () {
-    return view('admin.dashboard');
+    return view('admin.catg');
 });
-// Route::get('/', function () {
-//     return view('sub-category');
-// });
-Route::get('/', function () {
-    return view('sub-category');
+
+//routing for subcategory
+Route::get('/admin', function () {
+    return view('admin.sub-catg');
+});
+
+
+Route::get('/viewitem', function () {
+    return view('viewitem.catg-view');
+});
+Route::get('/viewitem', function () {
+    return view('viewitem.sub-catg-view');
 });
 
 Auth::routes();
