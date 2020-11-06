@@ -28,9 +28,10 @@ Admin panel
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($categories as $category)
                     <tr>
-                        <td>FootWear</td>
-                        <td>Shoes</td>
+                        <td>{{ $category->title }}</td>
+                        <td>{{ $category->product }}</td>
                       
                         <td>
                             
@@ -38,7 +39,7 @@ Admin panel
                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
-                    
+                @endforeach  
                 </tbody>
             </table>
         </div>
