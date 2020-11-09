@@ -14,37 +14,20 @@
 Route::get('/', function () {
   return view('welcome');
 });
-
-Route::resource('admin','AdminController');
+// category
+Route::get('categories','AdminController@add_categories');
 Route::get('store','AdminController@storecategory');
-Route::get('view-records','AdminController@index');
+Route::get('view-records-categ','AdminController@index');
+Route::get('deletecat/{id}','AdminController@destroy')->name('deletecat');
 
+// subcategory
+Route::get('sub-categories','SubcategController@add_subcategory');
+Route::get('storesub','SubcategController@storesubcategory');
+Route::get('view-records-subcateg','SubcategController@index');
+Route::get('deletesubcat/{id}','AdminController@destroy')->name('deletesubcat');
 
-
-// routing for category
-// Route::get('/admin', function () {
-//    return view('admin.catg');
-// });
-
-// Route::get('/admin','AdminController@index');
-
-// Route::get('/admin/create','AdminController@create');
-
-// Route::post('/adminaction','AdminController@storecategory');
-
-//routing for subcategory
-// Route::get('/admin', function () {
-//     return view('admin.sub-catg');
-// });
-
-
-// Route::get('/viewitem', function () {
-//     return view('viewitem.catg-view');
-// });
-// Route::get('/viewitem', function () {
-//     return view('viewitem.sub-catg-view');
-// });
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 

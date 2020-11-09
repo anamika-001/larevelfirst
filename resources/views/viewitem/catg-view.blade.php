@@ -14,7 +14,7 @@ Admin panel
                 <div class="row">
                     <div class="col-sm-8"><h3>Category Product Details</h3></div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                     <a href="{{url('categories')}}" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</a>
                     </div>
                 </div>
             </div>
@@ -34,9 +34,10 @@ Admin panel
                         <td>{{ $category->product }}</td>
                       
                         <td>
-                            
+                        
                             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href = 'deletecat/{{ $category->id }}' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                     
                         </td>
                     </tr>
                 @endforeach  

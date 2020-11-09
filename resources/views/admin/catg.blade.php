@@ -29,8 +29,9 @@ Admin panel
     </p>
     <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
     <button class="btn btn-info" type=submit>Add Product</button>
-    <a class="btn btn-info" type>View Product</a>
+   
    </form>
+   <a href="{{url('view-records-categ')}}" class="btn btn-info" type>View Product</a>
   </div>
 </div>
 @endsection

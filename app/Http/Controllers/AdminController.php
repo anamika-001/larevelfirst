@@ -9,15 +9,14 @@ use DB;
 class AdminController extends Controller
 {
 
-   public function create(){
-        
+   public function add_categories(){
+       
         return view('admin.catg');
     }
 
     public function index(){
-    //    dd("test");
-        $categories = DB::select('select * from category');
         
+     $categories = DB::select('select * from category');
      return view('viewitem.catg-view',['categories'=>$categories]);
     }
 
@@ -28,9 +27,6 @@ class AdminController extends Controller
         'product'=>'required'
         ]);
 
-
-
-        
         $category = new categ();
         $category->title=request('title');
         $category->product=request('product');
@@ -40,5 +36,12 @@ class AdminController extends Controller
 
     }
 
-    
+    public function destroy($id) {
+        $data =DB::delete('delete from category where id = ?',[$id]);
+        if($data){
+            
+            return redirect()->back()->withErrors(['success' => 'Category deleted successfully.']);
+        }
+
+    }
 }

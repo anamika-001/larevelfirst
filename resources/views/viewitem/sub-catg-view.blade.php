@@ -13,29 +13,34 @@ Admin panel
                 <div class="row">
                     <div class="col-sm-8"><h3>Subcategory Product Details</h3></div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                        <a href="{{url('sub-categories')}}" type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</a>
                     </div>
                 </div>
             </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th><b>Product category</b></th>
-                        <th><b>Product Name</b></th>
+                       <th><b>category Id</b></th>
+                        <th><b>Subcategories</b></th>
+                        <th><b>Name</b></th>
                         <th><b>Actions</b></th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($subcategories as $subcateg)
                     <tr>
-                        <td>FootWear</td>
-                        <td>Shoes</td>
-                      
-                        <td>
-                            
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
+                    
+                    <td>{{ $subcateg->catg_id}}</td>
+                    <td>{{ $subcateg->subcateg }}</td> 
+                    <td>{{ $subcateg->name }}</td> 
+                    <td>
+                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                    <a href = 'deletesubcat/{{ $subcateg->id }}' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+                     
+                       
                     </tr>
+                    @endforeach
                     
                 </tbody>
             </table>
