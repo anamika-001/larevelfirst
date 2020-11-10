@@ -35,7 +35,7 @@ Admin panel
                       
                         <td>
                         
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href = 'editcat/{{ $category->id }}' type="submit" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href = 'deletecat/{{ $category->id }}' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                      
                         </td>

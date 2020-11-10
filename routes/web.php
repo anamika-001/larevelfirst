@@ -12,19 +12,24 @@
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  return view('layouts.admin');
 });
+
 // category
 Route::get('categories','AdminController@add_categories');
 Route::get('store','AdminController@storecategory');
 Route::get('view-records-categ','AdminController@index');
 Route::get('deletecat/{id}','AdminController@destroy')->name('deletecat');
+Route::get('editcat/{id}','AdminController@edit');
+Route::get('updatecat/{id}','AdminController@update')->name('route');
+
 
 // subcategory
 Route::get('sub-categories','SubcategController@add_subcategory');
 Route::get('storesub','SubcategController@storesubcategory');
 Route::get('view-records-subcateg','SubcategController@index');
-Route::get('deletesubcat/{id}','AdminController@destroy')->name('deletesubcat');
+Route::get('deletesubcat/{id}','SubcategController@destroy')->name('deletesubcat');
+Route::get('edit-category','AdminController@');
 
 
 Auth::routes();

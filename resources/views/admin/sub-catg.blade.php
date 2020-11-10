@@ -18,11 +18,15 @@ Admin panel
   Select Category
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<select>
+
   @foreach($categories as $catg)
+  <select>
+  <ul>
    <option value="{{$catg->id}}" name="catg_id">{{$catg->title}}</option>
+   </ul>
+   </select>
   @endforeach
-  </select>
+ 
   </div>
 </div>
     <div>

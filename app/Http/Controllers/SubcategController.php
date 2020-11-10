@@ -10,12 +10,12 @@ use App\Subcateg;
 class SubcategController extends Controller
 {  
     
-    
+    //view ADD page
     public function add_subcategory(){
         $categories=DB::table('category')->select('id', 'title')->get();
         return view('admin.sub-catg',['categories'=>$categories]);
         }
-
+       //listing of items
     public function index(){
        
         $subcategories = DB::select('select * from subcategories');
@@ -23,7 +23,7 @@ class SubcategController extends Controller
         return view('viewitem.sub-catg-view',['subcategories'=>$subcategories]);
         }
 
-   
+    // adding category item 
     public function storesubcategory(Request $request){
       
         $details = DB::table('category')->select('id', 'title')->get();
@@ -38,11 +38,14 @@ class SubcategController extends Controller
         return redirect('/admin');
 
     }
+    //editing Category item
+
+
+     //  deleting item from category
     public function destroy($id){
 
         $data =DB::delete('delete from subcategories where id = ?',[$id]);
         if($data){
-            
             return redirect()->back()->withErrors(['success' => 'SubCategory deleted successfully.']);
         }
 
