@@ -14,7 +14,14 @@ Admin panel
   <h5 class="card-header">Edit Category Section</h5>
   <!-- form to edit data -->
 <form role="form" action="{{action('AdminController@update',[$details->id])}}" style="padding:30px">
-   
+<div class="flash-message">
+            @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            @endif
+  </div>
+      
     <p class="input-group">
    
     <div>

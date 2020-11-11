@@ -21,17 +21,20 @@ class AdminController extends Controller
     }
    //adding category item 
     public function storecategory(Request $request){
+        
         $this->validate($request,
         [
-        'title'=>'required',
+        'title'=>'required|min:2|max:20',
         'product'=>'required'
         ]);
 
         $category = new categ();
-        $category->title=request('title');
-        $category->product=request('product');
+        $category->title=$request['title'];
+        $category->product=$request['product'];
         
+        // $category->save();
         $category->save();
+        $request->session()->flash('alert-success', 'Category Successfully Added!');
         return redirect()->back();
 
     }
@@ -50,7 +53,7 @@ class AdminController extends Controller
     'title' => $request->title??'',
     'product' => $request->product??''
      ]);
-    
+     return redirect()->back()->with('message', 'Updated Successfully');
     
     }
 
@@ -58,8 +61,7 @@ class AdminController extends Controller
     public function destroy($id) {
         $data =DB::delete('delete from category where id = ?',[$id]);
         if($data){
-            
-            return redirect()->back()->withErrors(['success' => 'Category deleted successfully.']);
+            return redirect()->back()->with('message', 'Deleted Successfully');
         }
 
     }

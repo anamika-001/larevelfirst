@@ -30,15 +30,35 @@ class SubcategController extends Controller
         
         $Subcategories = new Subcateg;
         // dd($Subcategories);
-        $Subcategories->catg_id= $request->catg_id;
-         dd( $Subcategories->catg_id);
+         $Subcategories->catg_id= $request->catg_id;
          $Subcategories->subcateg=$request->subcateg;
          $Subcategories->name=$request->name;
          $Subcategories->save();
-        return redirect('/admin');
+         $request->session()->flash('alert-success', 'Subcategory Successfully Added!');
+        return redirect()->back();
 
     }
     //editing Category item
+    public function edit($id)
+    {
+    $categories=DB::table('category')->select('id', 'title')->get();
+    $details = DB::table('subcategories')->where('id',  '=', $id)->first();
+    return view('edit_subcategory', compact('details'),['categories'=>$categories]);
+    }
+    
+    //updating edited data
+    public function update(Request $request, $id)
+
+    {
+      dd($request->ALL());
+      DB::table('subcategories')->where('id', '=', $id)->update([
+    'categ_id' => $request->catg_id??'',
+    'subcateg' => $request->title??'',
+    'name' => $request->product??''
+     ]);
+     return redirect()->back()->with('message', 'Updated Successfully')->route('view-records-categ');
+    
+    }
 
 
      //  deleting item from category
@@ -46,7 +66,7 @@ class SubcategController extends Controller
 
         $data =DB::delete('delete from subcategories where id = ?',[$id]);
         if($data){
-            return redirect()->back()->withErrors(['success' => 'SubCategory deleted successfully.']);
+            return redirect()->back()->with('message', 'Deleted Successfully');
         }
 
 

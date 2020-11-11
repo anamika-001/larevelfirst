@@ -21,7 +21,7 @@ Route::get('store','AdminController@storecategory');
 Route::get('view-records-categ','AdminController@index');
 Route::get('deletecat/{id}','AdminController@destroy')->name('deletecat');
 Route::get('editcat/{id}','AdminController@edit');
-Route::get('updatecat/{id}','AdminController@update')->name('route');
+Route::get('updatecat/{id}','AdminController@update');
 
 
 // subcategory
@@ -29,7 +29,8 @@ Route::get('sub-categories','SubcategController@add_subcategory');
 Route::get('storesub','SubcategController@storesubcategory');
 Route::get('view-records-subcateg','SubcategController@index');
 Route::get('deletesubcat/{id}','SubcategController@destroy')->name('deletesubcat');
-Route::get('edit-category','AdminController@');
+Route::get('editsubcatgory/{id}','SubcategController@edit');
+Route::get('updatesubcatgory/{id}','SubcategController@update');
 
 
 Auth::routes();

@@ -18,6 +18,11 @@ Admin panel
                     </div>
                 </div>
             </div>
+            @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            @endif
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -37,6 +42,7 @@ Admin panel
                         
                             <a href = 'editcat/{{ $category->id }}' type="submit" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href = 'deletecat/{{ $category->id }}' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+
                      
                         </td>
                     </tr>
